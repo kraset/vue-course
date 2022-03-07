@@ -1,6 +1,9 @@
 <template>
   <div class="some-list">
-    <p>I am the list component: {{ numberList[0] }}</p>
+    <p>I am the list component.</p>
+    <ul>
+    <div v-for="n in nameList" :key="n">{{n}}</div>
+    </ul>
   </div>
 </template>
 
@@ -17,7 +20,7 @@ export default defineComponent({
     };
   },
   props: {
-    numberList: { type: Array as PropType<number[]>, required: true },
+    nameList: { type: Array as PropType<string[]>, required: true },
   },
 });
 </script>
@@ -27,7 +30,6 @@ export default defineComponent({
 .some-list {
   background-color: rgb(152, 193, 226);
   width: 80%;
-  height: 50%;
   margin: auto;
 }
 p {

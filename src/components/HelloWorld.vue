@@ -3,16 +3,13 @@
     <h1>{{ msg }}</h1>
     <p>Welcome to the Hello World component.</p>
     <button @click="onClickCounter()">Click me to increase a counter.</button>
-    <br>
-
-
+    <h4>Counter: {{ counter }}</h4>
     <button @click="onClickChangeList()">Click to change the list.</button>
 
-    <h4>Counter: {{ counter }}</h4>
 
-    <SomeList :numberList="listOfNumbers" />
+    <SomeList :nameList="listOfNames" />
   </div>
-</template>
+</template>nameList
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
@@ -24,12 +21,12 @@ export default defineComponent({
     SomeList,
   },
   setup() {
-    const listOfNumbers = ref<number[]>([1, 2, 3]);
+    const listOfNames = ref<string[]>(['Karl', 'Anna', 'Lisa']);
     const counter = ref<number>(5);
     // expose to template and other options API hooks
     return {
       counter,
-      listOfNumbers,
+      listOfNames,
     };
   },
   props: {
@@ -38,11 +35,9 @@ export default defineComponent({
   methods: {
     onClickCounter() {
       this.counter++;
-      this.listOfNumbers[0]++;
-      this.listOfNumbers = [7, 2, 4];
     },
     onClickChangeList() {
-      this.listOfNumbers = [7, 2, 4];
+      this.listOfNames = ['Sten', 'Oskar', 'Emelie'];
     },
   },
 });
