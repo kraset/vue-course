@@ -1,25 +1,40 @@
 <template>
-  This is text in the App component.
-  <HelloWorld msg="Hello world" />
+  <p>This is text in the App component.</p>
+
+  <div v-if="!showHome">
+    <button @click="showHome = true">Show Personlist</button>
+    <SimpleTest title="Simple Test Component" />
+  </div>
+
+  <Home v-if="showHome" title="I am Home" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { defineComponent, ref } from 'vue';
+import Home from './components/Home.vue';
+import SimpleTest from './components/SimpleTest.vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld,
+    Home,
+    SimpleTest,
+  },
+  setup() {
+    const showHome = ref<boolean>(false);
+    return {
+      showHome,
+    };
   },
 });
 </script>
 
 <style>
+button {
+  margin-bottom: 20px;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 20px;
