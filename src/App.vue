@@ -2,7 +2,7 @@
   <p>This is text in the App component.</p>
 
   <div v-if="!showHome">
-    <button @click="showHome = true">Show Personlist</button>
+    <button @click="showHome = true">Show Cool Lists</button>
     <SimpleTest title="Simple Test Component" />
   </div>
 
@@ -32,6 +32,7 @@ export default defineComponent({
 <style>
 button {
   margin-bottom: 20px;
+  margin-right: 20px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
